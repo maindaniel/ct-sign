@@ -87,6 +87,10 @@ void handleNotFound() {
 	digitalWrite ( led, 0 );
 }
 
+void handleTest() {
+  
+}
+
 void setup ( void ) {
 	pinMode ( led, OUTPUT );
 	digitalWrite ( led, 0 );
