@@ -1,6 +1,6 @@
 #include "ledExample.h"
 
-#define NUM_LEDS      100
+#define NUM_LEDS      150
 #define LED_TYPE   WS2811
 #define COLOR_ORDER   GRB
 #define DATA_PIN        3
