@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hacktoberfest Sign</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet"> 
+        <style>
+            /* 
+                Colors: 
+                -- 2020
+                Hacktober-blue: #183d5d
+                Hacktober-light-blue: #93c2db
+                Hacktober-pink: #ff8ae2
+                Hacktober-purple: #9c4668
+            */
+
+            * {
+                font-family: 'Inter';
+            }
+
+            body {
+                background: #183d5d;
+            }
+
+            .body-wrapper {
+                max-width: 1170px;
+                margin: 1rem auto;
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .header img {
+                height: 6rem;
+                cursor: pointer;
+            }
+
+            .menu ul {
+                display: flex;
+                list-style: none;
+            }
+            .menu ul li {
+                margin: 0 1.25rem;
+                font-weight: bold;
+                color: #93c2db;
+                cursor: pointer;
+            }
+            .menu ul li:hover {
+                color: #ff8aef;
+            }
+            .menu ul li.active {
+                color: #fff;
+                border-bottom: 0.25rem solid #93c2db;
+            }
+
+            .sign {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 5rem;
+            }
+
+            .color-presets {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+            .color-presets h2 {
+                color: #fff;
+            }
+            .color-presets ul {
+                display: flex;
+                justify-content: space-between;
+                list-style: none;
+            }
+            .color-presets ul li {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                align-items: center;
+                margin: 0 1rem;
+                padding: 1rem 0.25rem;
+                cursor: pointer;
+                border: 2px solid #183d5d;
+                border-radius: 4px;
+            }
+            .color-presets ul li:hover {
+                border: 2px solid #93c2db;
+            }
+            .color-presets .orb {
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 100%;
+            }
+            .color-presets h3 {
+                color: #93c2db;
+                text-align: center;
+            }
+            .color-presets .h-2020 {
+                background-color: #9c4668;
+            }
+            .color-presets .h-2019 {
+                background-color: #45a2ff;
+            }
+            .color-presets .h-2018 {
+                background-color: #01ffff;
+            }
+            .color-presets .h-2017 {
+                background-color: #ff625f;
+            }
+            .color-presets .h-2016 {
+                background-color: #ce873d;
+            }
+            .color-presets .h-2015 {
+                background-color: #ffffff;
+            }
+            .color-presets .h-2014 {
+                background-color: #dda14a;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="body-wrapper">
+            <div class="header">
+                <img src="img/hacktoberfest_logo.svg" />
+                <nav class="menu">
+                    <ul>
+                        <li class="active">Sign</li>
+                        <li>About</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="content">
+                <div class="sign">
+                    <img src="img/hacktoberfest_logo.svg" />
+                    <!-- <img src="img/hacktoberfest_2019_logo.svg" />
+                    <img src="img/hacktoberfest_2018_logo.png" />
+                    <img src="img/hacktoberfest_2017_logo.svg" />
+                    <img src="img/hacktoberfest_2016_logo.svg" />
+                    <img src="img/hacktoberfest_2015_logo.png" />
+                    <img src="img/hacktoberfest_2014_logo.png" /> -->
+                </div>
+                <div class="color-presets">
+                    <h2>Color Presets</h2>
+                    <ul>
+                        <li>
+                            <div class="orb h-2020"></div>
+                            <h3>Hacktoberfest 2020</h3>
+                        </li>
+                        <li>
+                            <div class="orb h-2019"></div>
+                            <h3>Hacktoberfest 2019</h3>
+                        </li>
+                        <li>
+                            <div class="orb h-2018"></div>
+                            <h3>Hacktoberfest 2018</h3>
+                        </li>
+                        <li>
+                            <div class="orb h-2017"></div>
+                            <h3>Hacktoberfest 2017</h3>
+                        </li>
+                        <li>
+                            <div class="orb h-2016"></div>
+                            <h3>Hacktoberfest 2016</h3>
+                        </li>
+                        <li>
+                            <div class="orb h-2015"></div>
+                            <h3>Hacktoberfest 2015</h3>
+                        </li>
+                        <li>
+                            <div class="orb h-2014"></div>
+                            <h3>Hacktoberfest 2014</h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer"></div>
+        </div>
+    </body>
+</html>
