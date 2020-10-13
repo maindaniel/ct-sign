@@ -1,0 +1,282 @@
+// Variables
+$hacktoberfest-blue: #183d5d;
+
+$hacktoberfest-2020-primary: #9c4668;
+$hacktoberfest-2020-primary-accent: #ff8ae2;
+$hacktoberfest-2020-secondary: #93c2db;
+$hacktoberfest-2020-secondary-accent: #fff;
+
+$hacktoberfest-2019-primary: #45a2ff;
+$hacktoberfest-2019-primary-accent: #434edc;
+$hacktoberfest-2019-secondary: #ff00b1;
+$hacktoberfest-2019-secondary-accent: #fffe18;
+
+$hacktoberfest-2018-primary: #01ffff;
+$hacktoberfest-2018-primary-accent: #582e41;
+$hacktoberfest-2018-secondary: #ff9c57;
+$hacktoberfest-2018-secondary-accent: #2a80d5;
+
+$hacktoberfest-2017-primary: #fb6362;
+$hacktoberfest-2017-primary-accent: #fe956b;
+$hacktoberfest-2017-secondary: #283187;
+$hacktoberfest-2017-secondary-accent: #3141a0;
+
+$hacktoberfest-2016-primary: #d3853b;
+$hacktoberfest-2016-primary-accent: #9b9a98;
+$hacktoberfest-2016-secondary: #3a3937;
+$hacktoberfest-2016-secondary-accent: #fff;
+
+$hacktoberfest-2015-primary: #fff;
+$hacktoberfest-2015-primary-accent: #23363d;
+$hacktoberfest-2015-secondary: #76adc8;
+$hacktoberfest-2015-secondary-accent: #d3511d;
+
+$hacktoberfest-2014-primary: #dda14a;
+$hacktoberfest-2014-primary-accent: #f15948;
+$hacktoberfest-2014-secondary: #fdd67e;
+$hacktoberfest-2014-secondary-accent: #f0ebcf;
+
+* {
+    font-family: 'Inter';
+}
+
+body {
+    background: $hacktoberfest-blue;
+}
+
+.body-wrapper {
+    max-width: 1170px;
+    margin: 1rem auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    img {
+        height: 6rem;
+        cursor: pointer;
+    }
+}
+
+.menu { 
+    ul {
+        display: flex;
+        list-style: none;
+    
+        li {
+            margin: 0 1.25rem;
+            font-weight: bold;
+            color: $hacktoberfest-2020-secondary;
+            cursor: pointer;
+            
+            &:hover {
+                color: $hacktoberfest-2020-primary-accent;
+            }
+            
+            &.active {
+                color: $hacktoberfest-2020-secondary-accent;
+                border-bottom: 0.25rem solid $hacktoberfest-2020-secondary;
+            }
+        }
+    }
+}
+
+.sign {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+    
+    &.h-2020 {
+        .primary-color {
+            fill: $hacktoberfest-2020-primary;
+        }
+        .primary-accent-color {
+            fill: $hacktoberfest-2020-primary-accent;
+        }
+        .secondary-color {
+            fill: $hacktoberfest-2020-secondary;
+        }
+        .secondary-accent-color {
+            fill: $hacktoberfest-2020-secondary-accent;
+        }
+    }
+    
+    &.h-2019 {
+        .primary-color {
+            fill: $hacktoberfest-2019-primary;
+        }
+        .primary-accent-color {
+            fill: $hacktoberfest-2019-primary-accent;
+        }
+        .secondary-color {
+            fill: $hacktoberfest-2019-secondary;
+        }
+        .secondary-accent-color {
+            fill: $hacktoberfest-2019-secondary-accent;
+        }
+    }
+    
+    &.h-2018 {
+        .primary-color {
+            fill: $hacktoberfest-2018-primary;
+        }
+        .primary-accent-color {
+            fill: $hacktoberfest-2018-primary-accent;
+        }
+        .secondary-color {
+            fill: $hacktoberfest-2018-secondary;
+        }
+        .secondary-accent-color {
+            fill: $hacktoberfest-2018-secondary-accent;
+        }
+    }
+    
+    &.h-2017 {
+        .primary-color {
+            fill: $hacktoberfest-2017-primary;
+        }
+        .primary-accent-color {
+            fill: $hacktoberfest-2017-primary-accent;
+        }
+        .secondary-color {
+            fill: $hacktoberfest-2017-secondary;
+        }
+        .secondary-accent-color {
+            fill: $hacktoberfest-2017-secondary-accent;
+        }
+    }
+    
+    &.h-2016 {
+        .primary-color {
+            fill: $hacktoberfest-2016-primary;
+        }
+        .primary-accent-color {
+            fill: $hacktoberfest-2016-primary-accent;
+        }
+        .secondary-color {
+            fill: $hacktoberfest-2016-secondary;
+        }
+        .secondary-accent-color {
+            fill: $hacktoberfest-2016-secondary-accent;
+        }
+    }
+    
+    &.h-2015 {
+        .primary-color {
+            fill: $hacktoberfest-2015-primary;
+        }
+        .primary-accent-color {
+            fill: $hacktoberfest-2015-primary-accent;
+        }
+        .secondary-color {
+            fill: $hacktoberfest-2015-secondary;
+        }
+        .secondary-accent-color {
+            fill: $hacktoberfest-2015-secondary-accent;
+        }
+    }
+    
+    &.h-2014 {
+        .primary-color {
+            fill: $hacktoberfest-2014-primary;
+        }
+        .primary-accent-color {
+            fill: $hacktoberfest-2014-primary-accent;
+        }
+        .secondary-color {
+            fill: $hacktoberfest-2014-secondary;
+        }
+        .secondary-accent-color {
+            fill: $hacktoberfest-2014-secondary-accent;
+        }
+    }
+}
+
+.color-presets {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    h2 {
+        color: $hacktoberfest-2020-secondary-accent;
+    }
+    
+    h3 {
+        color: $hacktoberfest-2020-secondary;
+        text-align: center;
+    }
+    
+    ul {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        
+        li {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 0 1rem;
+            padding: 1rem 0.25rem;
+            cursor: pointer;
+            border: 2px solid $hacktoberfest-blue;
+            border-radius: 4px;
+            
+            &:hover {
+                border: 2px solid $hacktoberfest-2020-secondary;
+            }
+        }
+        
+        .orb {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 100%;
+    
+            &.h-2020 {
+                background-color: $hacktoberfest-2020-primary;
+            }
+            
+            &.h-2019 {
+                background-color: $hacktoberfest-2019-primary;
+            }
+            
+            &.h-2018 {
+                background-color: $hacktoberfest-2018-primary;
+            }
+            
+            &.h-2017 {
+                background-color: $hacktoberfest-2017-primary;
+            }
+            
+            &.h-2016 {
+                background-color: $hacktoberfest-2016-primary;
+            }
+            
+            &.h-2015 {
+                background-color: $hacktoberfest-2015-primary;
+            }
+            
+            &.h-2014 {
+                background-color: $hacktoberfest-2014-primary;
+            }
+        }
+    }
+}
+
+.save {
+    display: flex;
+    justify-content: center;
+    
+    button {
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+        background: #9c4668;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+}
