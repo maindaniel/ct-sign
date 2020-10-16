@@ -91,10 +91,6 @@ void handleNotFound() {
 	digitalWrite ( led, 0 );
 }
 
-void handleTest() {
-  
-}
-
 void drawGraph() {
 	String out = "";
 	char temp[100];
@@ -111,6 +107,32 @@ void drawGraph() {
 	out += "</g>\n</svg>\n";
 
 	server.send ( 200, "image/svg+xml", out);
+}
+
+void handleLighting () {
+	HTTPMethod method = server.method();
+
+	if (method == HTTP_POST) {
+		Serial.println ( "" );
+		Serial.println ( "Got lighting payload!" );
+
+		server.send ( 200, "text/plain", server.arg(0) );
+		return;
+	}
+	else if (method == HTTP_GET) {
+		Serial.println ( "" );
+		Serial.println ( "Got lighting request!" );
+
+		server.send ( 200, "text/plain", "Data here soon" );
+		return;
+	}
+	else {
+		Serial.println ( "" );
+		Serial.println ( "Got bad request!" );
+
+		server.send ( 400, "text/plain");
+		return;
+	}
 }
 
 void setup ( void ) {
@@ -140,6 +162,7 @@ void setup ( void ) {
 	server.on ( "/inline", []() {
 		server.send ( 200, "text/plain", "this works as well" );
 	} );
+	server.on ("/lighting", handleLighting );
 	server.onNotFound ( handleNotFound );
 	server.begin();
 	Serial.println ( "HTTP server started" );
