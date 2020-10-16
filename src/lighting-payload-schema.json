@@ -1,0 +1,126 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "A payload providing information for changing a sign's lighting",
+    "default": {},
+    "examples": [
+        {
+            "brightness": 45,
+            "pattern": [
+                {
+                    "range_start": 0,
+                    "range_end": 10,
+                    "color": "#FFFFFF"
+                },
+                {
+                    "range_start": 11,
+                    "range_end": 15,
+                    "color": "#FF00FF"
+                },
+                {
+                    "range_start": 16,
+                    "range_end": 28,
+                    "color": "#FFFF00"
+                }
+            ]
+        }
+    ],
+    "required": [
+        "pattern"
+    ],
+    "properties": {
+        "brightness": {
+            "$id": "#/properties/brightness",
+            "type": "integer",
+            "title": "The brightness schema",
+            "description": "A value that indicates how bright the leds should be. 0-255",
+            "default": 255,
+            "examples": [
+                45
+            ]
+        },
+        "pattern": {
+            "$id": "#/properties/pattern",
+            "type": "array",
+            "title": "The pattern schema",
+            "description": "An array of lighting objects used to relay how the sign should light up",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "range_start": 0,
+                        "range_end": 10,
+                        "color": "#FFFFFF"
+                    },
+                    {
+                        "range_start": 11,
+                        "range_end": 15,
+                        "color": "#FF00FF"
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/pattern/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/pattern/items/anyOf/0",
+                        "type": "object",
+                        "title": "The lighting schema",
+                        "description": "An object that has the start LED, end LED, and color to set a section of LEDs in a strip",
+                        "default": {},
+                        "examples": [
+                            {
+                                "range_start": 0,
+                                "range_end": 10,
+                                "color": "#FFFFFF"
+                            }
+                        ],
+                        "required": [
+                            "range_start",
+                            "range_end",
+                            "color"
+                        ],
+                        "properties": {
+                            "range_start": {
+                                "$id": "#/properties/pattern/items/anyOf/0/properties/range_start",
+                                "type": "integer",
+                                "title": "The range_start schema",
+                                "description": "Specifies the start of the range of LEDS to start applying a color to.",
+                                "default": 0,
+                                "examples": [
+                                    0
+                                ]
+                            },
+                            "range_end": {
+                                "$id": "#/properties/pattern/items/anyOf/0/properties/range_end",
+                                "type": "integer",
+                                "title": "The range_end schema",
+                                "description": "Specifies the end of the range of LEDS to start applying a color to.",
+                                "default": 0,
+                                "examples": [
+                                    10
+                                ]
+                            },
+                            "color": {
+                                "$id": "#/properties/pattern/items/anyOf/0/properties/color",
+                                "type": "string",
+                                "title": "The color schema",
+                                "description": "A hexvalue denoting the color to apply to the range of LEDs. Should start with `#`",
+                                "default": "#FFFFFF",
+                                "examples": [
+                                    "#FFFFFF",
+                                    "#afc0b7"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": true
+}
