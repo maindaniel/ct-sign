@@ -34,6 +34,7 @@
 #include <ESP8266mDNS.h>
 #include <env.h>
 #include <ledExample.h>
+#include <lightingManager.h>
 
 ESP8266WebServer server ( 80 );
 
@@ -41,6 +42,8 @@ const int led = 13;
 
 // If true runs example FastLED lighting
 const bool exampleLeds = true;
+
+LightingManager lightManager = LightingManager();
 
 void handleRoot() {
 	digitalWrite ( led, 1 );
@@ -116,14 +119,24 @@ void handleLighting () {
 		Serial.println ( "" );
 		Serial.println ( "Got lighting payload!" );
 
-		server.send ( 200, "text/plain", server.arg(0) );
+		Serial.println(server.arg(0));
+
+		const char* payload = server.arg(0).c_str();
+
+		lightManager.setLightingPattern(payload);
+
+		if(lightManager.getLightingPattern().segments)
+
+		server.send ( 200, "application/json",  lightManager.getLightingPattern().toJSONString());
 		return;
 	}
 	else if (method == HTTP_GET) {
 		Serial.println ( "" );
 		Serial.println ( "Got lighting request!" );
 
-		server.send ( 200, "text/plain", "Data here soon" );
+		String pattern = lightManager.getLightingPattern().toJSONString();
+
+		server.send ( 200, "application/json", pattern );
 		return;
 	}
 	else {
@@ -136,6 +149,7 @@ void handleLighting () {
 }
 
 void setup ( void ) {
+	ESP.wdtDisable();
 	pinMode ( led, OUTPUT );
 	digitalWrite ( led, 0 );
 	Serial.begin ( 115200 );

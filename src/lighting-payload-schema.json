@@ -10,19 +10,19 @@
             "brightness": 45,
             "pattern": [
                 {
-                    "range_start": 0,
-                    "range_end": 10,
-                    "color": "#FFFFFF"
+                    "s": 0,
+                    "e": 10,
+                    "z": "#FFFFFF"
                 },
                 {
-                    "range_start": 11,
-                    "range_end": 15,
-                    "color": "#FF00FF"
+                    "s": 11,
+                    "e": 15,
+                    "c": "#FF00FF"
                 },
                 {
-                    "range_start": 16,
-                    "range_end": 28,
-                    "color": "#FFFF00"
+                    "s": 16,
+                    "e": 28,
+                    "c": "#FFFF00"
                 }
             ]
         }
@@ -50,14 +50,14 @@
             "examples": [
                 [
                     {
-                        "range_start": 0,
-                        "range_end": 10,
-                        "color": "#FFFFFF"
+                        "s": 0,
+                        "e": 10,
+                        "c": "#FFFFFF"
                     },
                     {
-                        "range_start": 11,
-                        "range_end": 15,
-                        "color": "#FF00FF"
+                        "s": 11,
+                        "e": 15,
+                        "c": "#FF00FF"
                     }
                 ]
             ],
@@ -73,19 +73,19 @@
                         "default": {},
                         "examples": [
                             {
-                                "range_start": 0,
-                                "range_end": 10,
-                                "color": "#FFFFFF"
+                                "s": 0,
+                                "e": 10,
+                                "c": "#FFFFFF"
                             }
                         ],
                         "required": [
-                            "range_start",
-                            "range_end",
-                            "color"
+                            "s",
+                            "e",
+                            "c"
                         ],
                         "properties": {
-                            "range_start": {
-                                "$id": "#/properties/pattern/items/anyOf/0/properties/range_start",
+                            "s": {
+                                "$id": "#/properties/pattern/items/anyOf/0/properties/s",
                                 "type": "integer",
                                 "title": "The range_start schema",
                                 "description": "Specifies the start of the range of LEDS to start applying a color to.",
@@ -94,8 +94,8 @@
                                     0
                                 ]
                             },
-                            "range_end": {
-                                "$id": "#/properties/pattern/items/anyOf/0/properties/range_end",
+                            "e": {
+                                "$id": "#/properties/pattern/items/anyOf/0/properties/e",
                                 "type": "integer",
                                 "title": "The range_end schema",
                                 "description": "Specifies the end of the range of LEDS to start applying a color to.",
@@ -104,8 +104,8 @@
                                     10
                                 ]
                             },
-                            "color": {
-                                "$id": "#/properties/pattern/items/anyOf/0/properties/color",
+                            "c": {
+                                "$id": "#/properties/pattern/items/anyOf/0/properties/c",
                                 "type": "string",
                                 "title": "The color schema",
                                 "description": "A hexvalue denoting the color to apply to the range of LEDs. Should start with `#`",
