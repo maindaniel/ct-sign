@@ -34,6 +34,7 @@
 #include <ESP8266mDNS.h>
 #include <env.h>
 #include <ledExample.h>
+#include <lightingManager.h>
 
 ESP8266WebServer server ( 80 );
 
@@ -41,6 +42,8 @@ const int led = 13;
 
 // If true runs example FastLED lighting
 const bool exampleLeds = true;
+
+LightingManager lightManager = LightingManager();
 
 void handleRoot() {
 	digitalWrite ( led, 1 );
@@ -91,10 +94,6 @@ void handleNotFound() {
 	digitalWrite ( led, 0 );
 }
 
-void handleTest() {
-  
-}
-
 void drawGraph() {
 	String out = "";
 	char temp[100];
@@ -113,7 +112,44 @@ void drawGraph() {
 	server.send ( 200, "image/svg+xml", out);
 }
 
+void handleLighting () {
+	HTTPMethod method = server.method();
+
+	if (method == HTTP_POST) {
+		Serial.println ( "" );
+		Serial.println ( "Got lighting payload!" );
+
+		Serial.println(server.arg(0));
+
+		const char* payload = server.arg(0).c_str();
+
+		lightManager.setLightingPattern(payload);
+
+		if(lightManager.getLightingPattern().segments)
+
+		server.send ( 200, "application/json",  lightManager.getLightingPattern().toJSONString());
+		return;
+	}
+	else if (method == HTTP_GET) {
+		Serial.println ( "" );
+		Serial.println ( "Got lighting request!" );
+
+		String pattern = lightManager.getLightingPattern().toJSONString();
+
+		server.send ( 200, "application/json", pattern );
+		return;
+	}
+	else {
+		Serial.println ( "" );
+		Serial.println ( "Got bad request!" );
+
+		server.send ( 400, "text/plain");
+		return;
+	}
+}
+
 void setup ( void ) {
+	ESP.wdtDisable();
 	pinMode ( led, OUTPUT );
 	digitalWrite ( led, 0 );
 	Serial.begin ( 115200 );
@@ -140,6 +176,7 @@ void setup ( void ) {
 	server.on ( "/inline", []() {
 		server.send ( 200, "text/plain", "this works as well" );
 	} );
+	server.on ("/lighting", handleLighting );
 	server.onNotFound ( handleNotFound );
 	server.begin();
 	Serial.println ( "HTTP server started" );
