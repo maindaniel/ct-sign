@@ -115,6 +115,11 @@ void drawGraph() {
 void handleLighting () {
 	HTTPMethod method = server.method();
 
+	Serial.println (method);
+
+	server.sendHeader("Access-Control-Allow-Origin", "*");
+	server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
+	
 	if (method == HTTP_POST) {
 		Serial.println ( "" );
 		Serial.println ( "Got lighting payload!" );
@@ -138,6 +143,9 @@ void handleLighting () {
 
 		server.send ( 200, "application/json", pattern );
 		return;
+	}
+	else if (method == HTTP_OPTIONS) {
+		server.send (200, "text/plain", "");
 	}
 	else {
 		Serial.println ( "" );

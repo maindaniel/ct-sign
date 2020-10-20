@@ -94,7 +94,8 @@ body {
 .color-presets {
   display: flex;
   align-items: center;
-  flex-direction: column; }
+  flex-direction: column;
+  margin-bottom: 2rem; }
   .color-presets h2 {
     color: #fff; }
   .color-presets h3 {
@@ -103,13 +104,14 @@ body {
   .color-presets ul {
     display: flex;
     justify-content: space-between;
+    margin: 0;
+    padding: 0;
     list-style: none; }
     .color-presets ul li {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
       align-items: center;
-      margin: 0 1rem;
       padding: 1rem 0.25rem;
       cursor: pointer;
       border: 2px solid #183d5d;
@@ -147,3 +149,7 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer; }
+    .save button[disabled] {
+      background: #6a2f46;
+      color: #c2c2c2;
+      cursor: default; }
