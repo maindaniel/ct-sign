@@ -1,7 +1,25 @@
 #include <lightingManager.h>
 #include <ArduinoJson.h>
 #include <string.h>
+#include <FastLED.h>
 
+#define NUM_LEDS      150
+#define LED_TYPE   WS2811
+#define COLOR_ORDER   GRB
+#define DATA_PIN        3
+#define VOLTS          12
+#define MAX_MA       4000
+
+CRGBArray<NUM_LEDS> leds;
+
+LightingManager::LightingManager() {
+    _pattern = LightingPattern();
+
+    delay( 3000 ); //safety startup delay
+    FastLED.setMaxPowerInVoltsAndMilliamps( VOLTS, MAX_MA);
+    FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS)
+        .setCorrection(TypicalLEDStrip);
+}
 
 void LightingManager::setLightingPattern( const char* payload ) {
     _pattern = LightingPattern();
@@ -63,6 +81,33 @@ void LightingManager::setLightingPattern( const char* payload ) {
         }
     }
 };
+
+void LightingManager::writeLightingToStrip() {
+    FastLED.setBrightness(_pattern.brightness);
+
+    for(LightingSegment segment: _pattern.segments) {
+        int start = segment.getStartLED();
+        int end = segment.getEndLED();
+
+        if(start == 0 && end == 0) {
+            continue;
+        }
+
+        int segR = segment.getColorR();
+        int segG = segment.getColorG();
+        int segB = segment.getColorB();
+
+        for(int i = start; i <= end; i++) {
+            leds[i].r = segR;
+            leds[i].g = segG;
+            leds[i].b = segB;
+        }
+    }
+
+    FastLED.show();
+
+    return;
+}
 
 String LightingPattern::toJSONString() {
     StaticJsonDocument<2048> doc;

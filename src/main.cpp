@@ -39,12 +39,10 @@
 
 ESP8266WebServer server ( 80 );
 
-const int led = 13;
-
 // If true runs example FastLED lighting
-const bool exampleLeds = true;
+const bool exampleLeds = false;
 
-LightingManager lightManager = LightingManager();
+LightingManager lightManager;
 
 void handleLighting () {
 	HTTPMethod method = server.method();
@@ -58,15 +56,15 @@ void handleLighting () {
 		Serial.println ( "" );
 		Serial.println ( "Got lighting payload!" );
 
-		Serial.println(server.arg(0));
+		//Serial.println(server.arg(0));
 
 		const char* payload = server.arg(0).c_str();
 
 		lightManager.setLightingPattern(payload);
 
-		if(lightManager.getLightingPattern().segments)
-
 		server.send ( 200, "application/json",  lightManager.getLightingPattern().toJSONString());
+
+		lightManager.writeLightingToStrip();
 		return;
 	}
 	else if (method == HTTP_GET) {
@@ -114,7 +112,6 @@ bool handleFileRead(String path) { // send the right file to the client (if it e
 }
 
 void handleNotFound() {
-	digitalWrite ( led, 1 );
 	String message = "File Not Found\n\n";
 	message += "URI: ";
 	message += server.uri();
@@ -129,13 +126,10 @@ void handleNotFound() {
 	}
 
 	server.send ( 404, "text/plain", message );
-	digitalWrite ( led, 0 );
 }
 
 void setup ( void ) {
 	ESP.wdtDisable();
-	pinMode ( led, OUTPUT );
-	digitalWrite ( led, 0 );
 	Serial.begin ( 115200 );
 	WiFi.begin ( ssid, password );
 	Serial.println ( "" );
@@ -168,6 +162,9 @@ void setup ( void ) {
 	Serial.println ( "HTTP server started" );
 	if(exampleLeds) {
 		fastLEDExampleSetup();
+	}
+	else {
+		lightManager = LightingManager();
 	}
 }
 

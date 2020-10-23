@@ -68,7 +68,7 @@
 //
 //  -Mark Kriegsman, December 2015
 
-CRGBArray<NUM_LEDS> leds;
+CRGBArray<NUM_LEDS> exampleLeds;
 
 // Overall twinkle speed.
 // 0 (VERY slow) to 8 (VERY fast).  
@@ -357,7 +357,7 @@ void chooseNextColorPalette( CRGBPalette16& pal)
 void fastLEDExampleSetup() {
   delay( 3000 ); //safety startup delay
   FastLED.setMaxPowerInVoltsAndMilliamps( VOLTS, MAX_MA);
-  FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS)
+  FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(exampleLeds, NUM_LEDS)
     .setCorrection(TypicalLEDStrip);
 
   chooseNextColorPalette(gTargetPalette);
@@ -373,7 +373,7 @@ void fastLEDExampleLoop()
     nblendPaletteTowardPalette( gCurrentPalette, gTargetPalette, 12);
   }
 
-  drawTwinkles( leds);
+  drawTwinkles( exampleLeds);
   
   FastLED.show();
 }

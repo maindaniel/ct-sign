@@ -2,6 +2,7 @@
 #define LIGHTINGMANAGER_H
 #include <Wstring.h>
 
+
 class LightingSegment {
     private:
         int _startLED;
@@ -57,9 +58,8 @@ class LightingManager {
         LightingPattern _pattern;
         
     public:
-        LightingManager() {
-            _pattern = LightingPattern();
-        };
+        LightingManager();
+        void writeLightingToStrip();
         void setLightingPattern( const char* payload );
         LightingPattern getLightingPattern() {
             return _pattern;
