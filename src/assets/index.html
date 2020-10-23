@@ -118,23 +118,84 @@
                     e.target.innerText = 'Updating...';
                     e.target.disabled = true;
 
+                    // Update to IP of ESP device
                     var url = 'http://192.168.86.196/lighting';
 
                     var headers = new Headers();
                     headers.append('Content-Type', 'application/json');
 
+                    let primaryColor = '9c4668';
+                    let primaryAccentColor = 'ff8ae2';
+                    let secondaryColor = '93c2db';
+                    let secondaryAccentColor = 'ffffff';
+
+                    switch(currentPreset) {
+                        case 'h-2014':
+                            primaryColor = 'dda14a';
+                            primaryAccentColor = 'f15948';
+                            secondaryColor = 'fdd67e';
+                            secondaryAccentColor = 'f0ebcf';
+                            break;
+                        case 'h-2015':
+                            primaryColor = 'ffffff';
+                            primaryAccentColor = '23363d';
+                            secondaryColor = '76adc8';
+                            secondaryAccentColor = 'd3511d';
+                            break;
+                        case 'h-2016':
+                            primaryColor = 'd3853b';
+                            primaryAccentColor = '9b9a98';
+                            secondaryColor = '3a3937';
+                            secondaryAccentColor = 'ffffff';
+                            break;
+                        case 'h-2017':
+                            primaryColor = 'fb6362';
+                            primaryAccentColor = 'fe956b';
+                            secondaryColor = '283187';
+                            secondaryAccentColor = '3141a0';
+                            break;
+                        case 'h-2018':
+                            primaryColor = '01ffff';
+                            primaryAccentColor = '582e41';
+                            secondaryColor = 'ff9c57';
+                            secondaryAccentColor = '2a80d5';
+                            break;
+                        case 'h-2019':
+                            primaryColor = '45a2ff';
+                            primaryAccentColor = '434edc';
+                            secondaryColor = 'ff00b1';
+                            secondaryAccentColor = 'fffe18';
+                            break;
+                        case 'h-2020':
+                        default:
+                            // Default to 2020 colors
+                            break;
+                    }
+
                     var data = JSON.stringify({
                         pattern: [{
                             s: 1,
                             e: 1,
-                            c: "9c4668"
+                            c: primaryColor
                         },
                         {
                             s: 2,
+                            e: 2,
+                            c: primaryAccentColor
+                        },
+                        {
+                            s: 3,
                             e: 3,
-                            c: "3141a0"
+                            c: secondaryColor
+                        },
+                        {
+                            s: 4,
+                            e: 4,
+                            c: secondaryAccentColor
                         }]
                     });
+
+                    console.log(data);
 
                     var requestOptions = {
                         method: 'POST',
