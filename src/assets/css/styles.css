@@ -137,19 +137,64 @@ body {
       .color-presets ul .orb.h-2014 {
         background-color: #dda14a; }
 
-.save {
+.brightness-slider {
   display: flex;
-  justify-content: center; }
-  .save button {
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-    background: #9c4668;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer; }
-    .save button[disabled] {
-      background: #6a2f46;
-      color: #c2c2c2;
-      cursor: default; }
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 5rem;
+  /*Chrome*/
+  /** FF*/
+  /* IE*/ }
+  .brightness-slider h2 {
+    color: #fff; }
+  .brightness-slider input {
+    width: 200px;
+    border: 2px solid #9c4668;
+    border-radius: 25px;
+    padding: 0.5rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .brightness-slider input[type='range'] {
+      overflow: hidden;
+      -webkit-appearance: none;
+      background-color: #9c4668; }
+    .brightness-slider input[type='range']::-webkit-slider-runnable-track {
+      height: 10px;
+      -webkit-appearance: none;
+      color: #01ffff;
+      margin-top: -1px; }
+    .brightness-slider input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      cursor: ew-resize;
+      background: #9c4668;
+      box-shadow: -80px 0 0 80px #01ffff; } }
+  .brightness-slider input[type='range']::-moz-range-progress {
+    background-color: #01ffff; }
+  .brightness-slider input[type='range']::-moz-range-track {
+    background-color: #183d5d; }
+  .brightness-slider input[type='range']::-ms-fill-lower {
+    background-color: #01ffff; }
+  .brightness-slider input[type='range']::-ms-fill-upper {
+    background-color: #183d5d; }
+
+.footer {
+  margin-bottom: 5rem; }
+  .footer .save {
+    display: flex;
+    justify-content: center; }
+    .footer .save button {
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      background: #9c4668;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer; }
+      .footer .save button[disabled] {
+        background: #6a2f46;
+        color: #c2c2c2;
+        cursor: default; }
+
+/*# sourceMappingURL=styles.css.map */
