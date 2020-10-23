@@ -38,13 +38,6 @@
                         <path class="primary-accent-color" d="M84.3326 346.037H50.7511V379.626H84.3326V346.037Z" fill="#FF8AE2"/>
                         <path class="primary-accent-color" d="M204.756 419.175C204.886 418.234 244.243 310.304 313.758 258.077C362.654 221.35 399.685 207.496 408.414 204.569C409.459 204.203 410.609 204.83 410.87 205.902C411.132 206.869 410.583 207.862 409.642 208.176C401.514 210.895 364.849 224.461 316.058 261.135C254.88 307.089 217.143 397.27 209.852 416.195C209.042 418.287 206.951 419.515 204.756 419.175Z" fill="#FF8AE2"/>
                     </svg>
-                    
-                    <!-- <img src="img/hacktoberfest_2019_logo.svg" />
-                    <img src="img/hacktoberfest_2018_logo.png" />
-                    <img src="img/hacktoberfest_2017_logo.svg" />
-                    <img src="img/hacktoberfest_2016_logo.svg" />
-                    <img src="img/hacktoberfest_2015_logo.png" />
-                    <img src="img/hacktoberfest_2014_logo.png" /> -->
                 </div>
                 <div class="color-presets">
                     <h2>Color Presets</h2>
@@ -79,6 +72,10 @@
                         </li>
                     </ul>
                 </div>
+                <div class="brightness-slider">
+                    <h2>Brightness</h2>
+                    <input id="brightness" type="range" min="10" max="40" value="40" />
+                </div>
             </div>
             <div class="footer">
                 <div class="save">
@@ -95,8 +92,6 @@
             for(const preset of presets) {
                 preset.addEventListener('click', function(e) {
                     var newPreset = this.getAttribute('data-preset');
-
-                    console.log(currentPreset, newPreset)
 
                     var sign = document.querySelector('.sign');
 
@@ -123,6 +118,8 @@
 
                     var headers = new Headers();
                     headers.append('Content-Type', 'application/json');
+
+                    let brightness = document.getElementById('brightness').value;
 
                     let primaryColor = '9c4668';
                     let primaryAccentColor = 'ff8ae2';
@@ -173,6 +170,7 @@
                     }
 
                     var data = JSON.stringify({
+                        brightness: brightness,
                         pattern: [{
                             s: 1,
                             e: 1,
@@ -194,8 +192,6 @@
                             c: secondaryAccentColor
                         }]
                     });
-
-                    console.log(data);
 
                     var requestOptions = {
                         method: 'POST',
