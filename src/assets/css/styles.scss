@@ -198,6 +198,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 2rem;
     
     h2 {
         color: $hacktoberfest-2020-secondary-accent;
@@ -211,6 +212,8 @@ body {
     ul {
         display: flex;
         justify-content: space-between;
+        margin: 0;
+        padding: 0;
         list-style: none;
         
         li {
@@ -218,7 +221,6 @@ body {
             flex-direction: column;
             flex-wrap: wrap;
             align-items: center;
-            margin: 0 1rem;
             padding: 1rem 0.25rem;
             cursor: pointer;
             border: 2px solid $hacktoberfest-blue;
@@ -278,5 +280,11 @@ body {
         border: none;
         border-radius: 4px;
         cursor: pointer;
+
+        &[disabled] {
+            background: #6a2f46;
+            color: #c2c2c2;
+            cursor: default;
+        }
     }
 }
